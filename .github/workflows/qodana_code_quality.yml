@@ -27,8 +27,9 @@ jobs:
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN_2052186332 }}
           QODANA_ENDPOINT: 'https://qodana.cloud'
-      - run:
-          node script.js ${{ runner.temp }}/qodana/results
+      - run: |
+          ls ${{ runner.temp }}/qodana/results
+          echo "base ${{ env.GITHUB_REF_NAME }}, repo ${{ env.GITHUB_REPOSITORY }}"
       - run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
