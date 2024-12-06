@@ -38,16 +38,16 @@ import java.util.List;
 /**
  * The simplest of method visitors, prints any invoked method
  * signature for all method invocations.
- * 
- * Class copied with modifications from CJKM: http://www.spinellis.gr/sw/ckjm/
+ *
+ * Class copied with modifications from CJKM: <a href="http://www.spinellis.gr/sw/ckjm/">...</a>
  */
 public class MethodVisitor extends EmptyVisitor {
 
     JavaClass visitedClass;
-    private MethodGen mg;
-    private ConstantPoolGen cp;
-    private String format;
-    private List<String> methodCalls = new ArrayList<>();
+    private final MethodGen mg;
+    private final ConstantPoolGen cp;
+    private final String format;
+    private final List<String> methodCalls = new ArrayList<>();
     StringBuilder sb = new StringBuilder();
     String helloWorld = "Hello World";
     String helloWorld2 = "Hello World2";
