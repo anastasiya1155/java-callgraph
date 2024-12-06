@@ -40,10 +40,9 @@ public class Pair<A, B> {
     
     @Override
     public String toString() {
-        StringBuffer b = new StringBuffer(first.toString());
-        b.append(" ");
-        b.append(second);
-        return b.toString();
+        String b = first.toString() + " " +
+                second;
+        return b;
     }
     
     @Override
