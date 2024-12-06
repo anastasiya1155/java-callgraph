@@ -28,7 +28,7 @@ jobs:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN_2052186332 }}
           QODANA_ENDPOINT: 'https://qodana.cloud'
       - run:
-          node script.js
+          node script.js ${{ runner.temp }}/qodana/results
       - run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
@@ -37,4 +37,5 @@ jobs:
           git commit -m "I fixed some issues"
           git push origin quick-fixes-$GITHUB_RUN_ID
           gh pr create --repo $GITHUB_REPOSITORY --base $GITHUB_REF_NAME --head quick-fixes-$GITHUB_RUN_ID --title "Pull requests" --body "I fixed some issues"
-      
+        env:
+          GH_TOKEN: ${{ github.token }}
