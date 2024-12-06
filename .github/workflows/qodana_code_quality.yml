@@ -24,6 +24,7 @@ jobs:
         with:
           pr-mode: false
           args: --apply-fixes,--profile-name,qodana.recommended,--log-level=debug
+          push-fixes: branch
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN_2052186332 }}
           QODANA_ENDPOINT: 'https://qodana.cloud'
