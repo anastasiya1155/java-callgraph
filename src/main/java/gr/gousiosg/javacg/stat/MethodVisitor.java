@@ -48,6 +48,8 @@ public class MethodVisitor extends EmptyVisitor {
     private ConstantPoolGen cp;
     private String format;
     private List<String> methodCalls = new ArrayList<>();
+    StringBuilder sb = new StringBuilder();
+    String helloWorld = "Hello World";
 
     public MethodVisitor(MethodGen m, JavaClass jc) {
         visitedClass = jc;
@@ -58,7 +60,6 @@ public class MethodVisitor extends EmptyVisitor {
     }
 
     private String argumentList(Type[] arguments) {
-        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < arguments.length; i++) {
             if (i != 0) {
                 sb.append(",");
@@ -84,9 +85,14 @@ public class MethodVisitor extends EmptyVisitor {
 
     private boolean visitInstruction(Instruction i) {
         short opcode = i.getOpcode();
+        String hello = "Hello";
         return ((InstructionConst.getInstruction(opcode) != null)
                 && !(i instanceof ConstantPushInstruction) 
                 && !(i instanceof ReturnInstruction));
+    }
+
+    private void printHello() {
+        System.out.println(helloWorld);
     }
 
     @Override
