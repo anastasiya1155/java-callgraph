@@ -25,7 +25,7 @@ jobs:
         uses: JetBrains/qodana-action@v2024.2
         with:
           pr-mode: false
-          args: --apply-fixes
+          args: --apply-fixes,--profile-name,qodana.recommended
           push-fixes: pull-request
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN_2052186332 }}
