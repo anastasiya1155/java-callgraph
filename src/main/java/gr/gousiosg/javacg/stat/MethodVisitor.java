@@ -50,6 +50,7 @@ public class MethodVisitor extends EmptyVisitor {
     private List<String> methodCalls = new ArrayList<>();
     StringBuilder sb = new StringBuilder();
     String helloWorld = "Hello World";
+    String helloWorld2 = "Hello World2";
 
     public MethodVisitor(MethodGen m, JavaClass jc) {
         visitedClass = jc;
