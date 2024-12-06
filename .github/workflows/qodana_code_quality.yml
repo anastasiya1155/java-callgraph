@@ -24,6 +24,9 @@ jobs:
         with:
           pr-mode: false
           args: --apply-fixes,--profile-name,qodana.recommended,--log-level=debug
+        env:
+          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN_2052186332 }}
+          QODANA_ENDPOINT: 'https://qodana.cloud'
       - run:
           node script.js
           git config user.name github-actions
@@ -33,6 +36,4 @@ jobs:
           git commit -m "I fixed some issues"
           git push origin quick-fixes-$GITHUB_RUN_ID
           gh pr create --repo $GITHUB_REPOSITORY --base $GITHUB_REF_NAME --head quick-fixes-$GITHUB_RUN_ID --title "Pull requests" --body "I fixed some issues"
-        env:
-          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN_2052186332 }}
-          QODANA_ENDPOINT: 'https://qodana.cloud'
+      
