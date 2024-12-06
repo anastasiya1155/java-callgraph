@@ -40,8 +40,8 @@ import java.util.Stack;
 
 public class MethodStack {
 
-    private static Stack<String> stack = new Stack<>();
-    private static Map<Pair<String, String>, Integer> callgraph = new HashMap<>();
+    private static final Stack<String> stack = new Stack<>();
+    private static final Map<Pair<String, String>, Integer> callgraph = new HashMap<>();
     static FileWriter fw; 
     static StringBuffer sb;
     static long threadid = -1L;
@@ -55,8 +55,7 @@ public class MethodStack {
                     e.printStackTrace();
                 }
                 //Sort by number of calls
-                List<Pair<String, String>> keys = new ArrayList<>();
-                keys.addAll(callgraph.keySet());
+                List<Pair<String, String>> keys = new ArrayList<>(callgraph.keySet());
                 Collections.sort(keys, (o1, o2) -> {
                     Integer v1 = callgraph.get(o1);
                     Integer v2 = callgraph.get(o2);
