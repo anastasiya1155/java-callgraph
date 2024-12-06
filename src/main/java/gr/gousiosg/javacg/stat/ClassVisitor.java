@@ -45,11 +45,11 @@ import java.util.List;
  */
 public class ClassVisitor extends EmptyVisitor {
 
-    private JavaClass clazz;
-    private ConstantPoolGen constants;
-    private String classReferenceFormat;
+    private final JavaClass clazz;
+    private final ConstantPoolGen constants;
+    private final String classReferenceFormat;
     private final DynamicCallManager DCManager = new DynamicCallManager();
-    private List<String> methodCalls = new ArrayList<>();
+    private final List<String> methodCalls = new ArrayList<>();
 
     public ClassVisitor(JavaClass jc) {
         clazz = jc;
@@ -77,7 +77,7 @@ public class ClassVisitor extends EmptyVisitor {
             if (constant.getTag() == 7) {
                 String referencedClass = 
                     constantPool.constantToString(constant);
-                System.out.println(String.format(classReferenceFormat, referencedClass));
+                System.out.printf((classReferenceFormat) + "%n", referencedClass);
             }
         }
     }
