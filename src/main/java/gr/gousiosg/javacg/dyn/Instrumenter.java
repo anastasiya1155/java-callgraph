@@ -164,7 +164,7 @@ public class Instrumenter implements ClassFileTransformer {
 
     private void enhanceMethod(CtBehavior method, String className)
             throws NotFoundException, CannotCompileException {
-        String name = className.substring(className.lastIndexOf('.') + 1, className.length());
+        String name = className.substring(className.lastIndexOf('.') + 1);
         String methodName = method.getName();
 
         if (method.getName().equals(name))
