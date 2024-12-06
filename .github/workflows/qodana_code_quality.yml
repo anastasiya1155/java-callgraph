@@ -29,14 +29,16 @@ jobs:
           QODANA_ENDPOINT: 'https://qodana.cloud'
       - run: |
           ls ${{ runner.temp }}/qodana/results
-          echo "base ${{ env.GITHUB_REF }}, repo ${{ github.event.repository.name }}"
+          echo "base ${{ env.GITHUB_REF }}/${{ github.head_ref }}, repo ${{ github.event.pull_request.repo.full_name }}}"
+          node script.js ${{ runner.temp }}/qodana/results
       - run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git checkout -b quick-fixes-$GITHUB_RUN_ID
+          git checkout -b $BRANCH
           git add -- .
           git commit -m "I fixed some issues"
           git push origin quick-fixes-$GITHUB_RUN_ID
-          gh pr create --base $GITHUB_REF --head quick-fixes-$GITHUB_RUN_ID --title "PR with fixes" --body "I fixed some issues"
+          gh pr create --base $GITHUB_REF --head $BRANCH --title "PR with fixes" --body "I fixed some issues"
         env:
           GH_TOKEN: ${{ github.token }}
+          BRANCH: quick-fixes-$GITHUB_RUN_ID
